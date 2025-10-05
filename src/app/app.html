@@ -1,2 +1,16 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<div class="min-h-screen flex flex-col bg-gradient-to-b from-indigo-950 via-purple-900 to-black">
+  <!-- Navbar fijo -->
+  <header class="sticky top-0 z-50 shadow-lg">
+    <app-navbar></app-navbar>
+  </header>
+
+  <!-- Contenido dinámico -->
+  <main class="flex-1">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer general -->
+  <footer class="text-center text-gray-400 py-4 text-sm border-t border-gray-700">
+    © 2025 Stargizers — NASA Space Apps Challenge
+  </footer>
+</div>
