@@ -1,11 +1,18 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { BasicStory } from './pages/basic-story/basic-story';
-import { IntermediateStory } from './pages/intermediate-story/intermediate-story';
 
 export const routes: Routes = [
-  { path: '', component: Home },
-  { path: 'basic', component: BasicStory },
-  { path: 'intermediate', component: IntermediateStory },
-  { path: '**', redirectTo: '' },
+  {
+    path: '',
+    redirectTo: sessionStorage.getItem('formCompleted') ? 'basic' : 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/home/home').then(m => m.Home)
+  },
+  {
+    path: 'basic',
+    loadComponent: () => import('./pages/basic-story/basic-story').then(m => m.BasicStory)
+  }
+  // ... otras rutas
 ];

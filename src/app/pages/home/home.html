@@ -1,40 +1,72 @@
-<section class="min-h-screen bg-gradient-to-b from-indigo-950 via-purple-900 to-black text-white flex flex-col items-center">
-  <!-- Hero principal -->
-  <div class="text-center mt-20 px-6">
-    <h1 class="text-5xl sm:text-6xl font-bold mb-4">🌟 Bienvenido a Stellar Stories</h1>
-    <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-300">
-      Descubre cómo el <span class="text-yellow-400 font-semibold">clima espacial</span> afecta nuestras vidas en la Tierra.
-      Aprende de forma divertida a través de historias interactivas y visuales.
+<section
+  class="min-h-screen bg-[url('assets/space-bg.jpg')] bg-cover bg-center flex flex-col items-center justify-center text-white"
+>
+  <div class="text-center mb-10 animate-fade-in">
+    <h1 class="text-5xl font-bold mb-4">Welcome to Stellar Stories</h1>
+    <p class="text-gray-300 text-lg max-w-xl mx-auto">
+      Begin your space adventure and discover how the universe connects to us.
     </p>
   </div>
 
-  <!-- Opciones de edad -->
-  <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8 px-6 max-w-4xl w-full">
-    <!-- Historia básica -->
-    <div
-      class="bg-indigo-700/40 hover:bg-indigo-600/60 border border-indigo-500 rounded-2xl p-8 text-center cursor-pointer transition transform hover:-translate-y-2 hover:shadow-xl"
-      routerLink="/basic"
-    >
-      <h2 class="text-2xl font-semibold mb-2">🌞 Historia Básica</h2>
-      <p class="text-gray-200">
-        Ideal para niños y principiantes. Aprende qué es el clima espacial y cómo nos afecta con ilustraciones animadas.
-      </p>
+  <!-- 👇 Formulario visible solo si NO ha iniciado -->
+  <div
+    *ngIf="!started"
+    class="bg-black/50 p-8 rounded-2xl shadow-lg w-full max-w-md animate-fade-in"
+  >
+    <!-- Step 1 -->
+    <div *ngIf="step === 1" class="text-center">
+      <h2 class="text-xl mb-4">Select your age range</h2>
+      <select
+        [(ngModel)]="userAge"
+        (change)="nextStep()"
+        class="bg-gray-800 text-white p-3 rounded-lg w-full"
+      >
+        <option value="" disabled selected>Select...</option>
+        <option>Under 12</option>
+        <option>13–17</option>
+        <option>18+</option>
+      </select>
     </div>
 
-    <!-- Historia intermedia -->
-    <div
-      class="bg-purple-700/40 hover:bg-purple-600/60 border border-purple-500 rounded-2xl p-8 text-center cursor-pointer transition transform hover:-translate-y-2 hover:shadow-xl"
-      routerLink="/intermediate"
-    >
-      <h2 class="text-2xl font-semibold mb-2">🚀 Historia Intermedia</h2>
-      <p class="text-gray-200">
-        Explora más a fondo los fenómenos solares, sus efectos tecnológicos y cómo la ciencia los estudia desde el espacio.
-      </p>
+    <!-- Step 2 -->
+    <div *ngIf="step === 2" class="text-center">
+      <h2 class="text-xl mb-4">Select your gender</h2>
+      <select
+        [(ngModel)]="userGender"
+        (change)="nextStep()"
+        class="bg-gray-800 text-white p-3 rounded-lg w-full"
+      >
+        <option value="" disabled selected>Select...</option>
+        <option>Female</option>
+        <option>Male</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <!-- Step 3 -->
+    <div *ngIf="step === 3" class="text-center">
+      <h2 class="text-xl mb-4">How much do you know about space?</h2>
+      <select
+        [(ngModel)]="userKnowledge"
+        (change)="nextStep()"
+        class="bg-gray-800 text-white p-3 rounded-lg w-full"
+      >
+        <option value="" disabled selected>Select...</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Expert</option>
+      </select>
+    </div>
+
+    <!-- Step 4 -->
+    <div *ngIf="step === 4" class="text-center">
+      <h2 class="text-xl mb-4">Ready to begin?</h2>
+      <button
+        (click)="startExperience()"
+        class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold transition"
+      >
+        Start Experience
+      </button>
     </div>
   </div>
-
-  <!-- Pie de bienvenida -->
-  <footer class="mt-20 text-gray-400 text-sm pb-10">
-    <p>Creado para el <span class="text-yellow-400">NASA Space Apps Challenge 2025</span></p>
-  </footer>
 </section>

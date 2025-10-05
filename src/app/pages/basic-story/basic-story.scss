@@ -1,0 +1,10 @@
+/* Puedes agregar estilos personalizados aquí; Tailwind hace la mayor parte */
+:host {
+  display: block;
+}
+
+/* ejemplo pequeño: dar foco visible a botones */
+button:focus {
+  outline: 2px solid rgba(255,255,255,0.15);
+  outline-offset: 2px;
+}
