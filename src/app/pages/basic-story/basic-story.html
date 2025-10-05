@@ -1,40 +1,6 @@
 <section class="min-h-screen flex flex-col items-center justify-start py-12 px-4 bg-gradient-to-b from-slate-900 to-indigo-900 text-white">
-  <!-- Profile / intro form -->
-  <div *ngIf="showIntroForm" class="w-full max-w-2xl bg-white/5 border border-white/10 rounded-2xl p-6 shadow-md backdrop-blur">
-    <h1 class="text-3xl font-bold mb-3 text-white">Start the experience — Lira's Story</h1>
-    <p class="text-gray-300 mb-4">Choose your age range, gender and how much you know about space.</p>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-      <select [(ngModel)]="profile.ageRange" class="p-2 rounded bg-white/10">
-        <option value="" disabled selected>Age range</option>
-        <option value="6-9">6–9</option>
-        <option value="10-12">10–12</option>
-        <option value="13-15">13–15</option>
-        <option value="16+">16+</option>
-      </select>
-
-      <select [(ngModel)]="profile.gender" class="p-2 rounded bg-white/10">
-        <option value="" disabled selected>Gender</option>
-        <option value="female">Female</option>
-        <option value="male">Male</option>
-        <option value="other">Other / Prefer not to say</option>
-      </select>
-
-      <select [(ngModel)]="profile.knowledge" class="p-2 rounded bg-white/10">
-        <option value="beginner">I know nothing</option>
-        <option value="intermediate">I know some</option>
-        <option value="advanced">I know a lot</option>
-      </select>
-    </div>
-
-    <div class="flex gap-3">
-      <button (click)="startStory()" class="px-4 py-2 rounded bg-yellow-400 text-black font-semibold hover:opacity-90">Start Experience</button>
-      <button (click)="state.clear(); profile = { ageRange: '', gender: '', knowledge: 'beginner' }" class="px-4 py-2 rounded bg-gray-700 text-white">Reset</button>
-    </div>
-  </div>
-
   <!-- Story scene -->
-  <div *ngIf="!showIntroForm && currentScene" class="w-full max-w-3xl mt-8">
+  <div class="w-full max-w-3xl mt-8">
     <div class="bg-white/5 rounded-2xl p-6 shadow-md">
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold">{{ currentScene?.title }}</h2>
