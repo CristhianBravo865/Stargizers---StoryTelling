@@ -1,40 +1,27 @@
-<section class="min-h-screen flex flex-col items-center justify-start py-12 px-4 bg-gradient-to-b from-slate-900 to-indigo-900 text-white">
-  <!-- Story scene -->
-  <div class="w-full max-w-3xl mt-8">
-    <div class="bg-white/5 rounded-2xl p-6 shadow-md">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-bold">{{ currentScene?.title }}</h2>
-        <div class="text-sm text-gray-300">
-          <span *ngIf="profile.ageRange">Age: {{ profile.ageRange }}</span>
-        </div>
-      </div>
+<div class="story-container">
+  <!-- NARRADOR -->
+  <div class="narrator" *ngIf="story.currentScene?.narration">
+    {{ story.currentScene.narration }}
+  </div>
 
-      <div class="mb-4">
-        <img
-          [src]="currentScene?.image"
-          [alt]="currentScene?.title"
-          class="w-full rounded-2xl shadow-lg object-cover aspect-video transition-opacity duration-500"
-          (error)="handleImageError($event)"
-        />
-      </div>
+  <!-- ESCENA VISUAL -->
+  <div class="scene-frame">
+   <img
+  [src]="story.currentScene?.image"
+  [alt]="story.currentScene?.title"
+  (error)="onImageError($event)"
+/>
 
-      <p class="text-lg text-gray-200 mb-6">{{ currentScene?.text }}</p>
 
-      <div class="flex flex-col sm:flex-row gap-3 mb-4">
-        <button *ngFor="let opt of currentScene?.options"
-                (click)="selectOption(opt.next)"
-                class="px-4 py-2 rounded bg-indigo-600 hover:bg-indigo-700">
-          {{ opt.text }}
-        </button>
-      </div>
-
-      <div class="flex justify-between mt-4">
-        <div class="flex gap-3">
-          <button (click)="back()" class="px-3 py-1 rounded bg-gray-700">Back</button>
-          <button (click)="resetToStart()" class="px-3 py-1 rounded bg-red-600">Restart</button>
-        </div>
-        <div class="text-sm text-gray-400">Scene id: {{ currentScene?.id }}</div>
-      </div>
+    <!-- GLOBO DE DIÁLOGO -->
+    <div class="dialogue-bubble" *ngIf="story.currentScene?.dialogue">
+      <p>{{ story.currentScene.dialogue }}</p>
     </div>
   </div>
-</section>
+
+  <!-- CONTROLES -->
+  <div class="controls">
+    <button (click)="prevScene()" [disabled]="story.isFirst">⟵ Anterior</button>
+    <button (click)="nextScene()" [disabled]="story.isLast">Continuar ⟶</button>
+  </div>
+</div>

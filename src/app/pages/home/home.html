@@ -1,72 +1,24 @@
-<section
-  class="min-h-screen bg-[url('assets/space-bg.jpg')] bg-cover bg-center flex flex-col items-center justify-center text-white"
->
-  <div class="text-center mb-10 animate-fade-in">
-    <h1 class="text-5xl font-bold mb-4">Welcome to Stellar Stories</h1>
-    <p class="text-gray-300 text-lg max-w-xl mx-auto">
-      Begin your space adventure and discover how the universe connects to us.
-    </p>
+<section class="min-h-screen flex flex-col items-center justify-center text-center text-white bg-gradient-to-b from-black via-indigo-950 to-purple-950">
+  
+  <!-- Imagen del título -->
+  <div class="flex flex-col items-center space-y-10 animate-fade-in">
+    <img
+      src="sunglitch.png"
+      alt="SW: The Day the Sun Glitched"
+      class="w-[320px] sm:w-[420px] md:w-[500px] drop-shadow-2xl"
+    />
+
+    <!-- Botón de inicio -->
+    <button
+      (click)="startStory()"
+      class="mt-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 text-black font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:scale-105 hover:brightness-110 transition-transform duration-300"
+    >
+      Start Story
+    </button>
   </div>
 
-  <!-- 👇 Formulario visible solo si NO ha iniciado -->
-  <div
-    *ngIf="!started"
-    class="bg-black/50 p-8 rounded-2xl shadow-lg w-full max-w-md animate-fade-in"
-  >
-    <!-- Step 1 -->
-    <div *ngIf="step === 1" class="text-center">
-      <h2 class="text-xl mb-4">Select your age range</h2>
-      <select
-        [(ngModel)]="userAge"
-        (change)="nextStep()"
-        class="bg-gray-800 text-white p-3 rounded-lg w-full"
-      >
-        <option value="" disabled selected>Select...</option>
-        <option>Under 12</option>
-        <option>13–17</option>
-        <option>18+</option>
-      </select>
-    </div>
-
-    <!-- Step 2 -->
-    <div *ngIf="step === 2" class="text-center">
-      <h2 class="text-xl mb-4">Select your gender</h2>
-      <select
-        [(ngModel)]="userGender"
-        (change)="nextStep()"
-        class="bg-gray-800 text-white p-3 rounded-lg w-full"
-      >
-        <option value="" disabled selected>Select...</option>
-        <option>Female</option>
-        <option>Male</option>
-        <option>Other</option>
-      </select>
-    </div>
-
-    <!-- Step 3 -->
-    <div *ngIf="step === 3" class="text-center">
-      <h2 class="text-xl mb-4">How much do you know about space?</h2>
-      <select
-        [(ngModel)]="userKnowledge"
-        (change)="nextStep()"
-        class="bg-gray-800 text-white p-3 rounded-lg w-full"
-      >
-        <option value="" disabled selected>Select...</option>
-        <option>Beginner</option>
-        <option>Intermediate</option>
-        <option>Expert</option>
-      </select>
-    </div>
-
-    <!-- Step 4 -->
-    <div *ngIf="step === 4" class="text-center">
-      <h2 class="text-xl mb-4">Ready to begin?</h2>
-      <button
-        (click)="startExperience()"
-        class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold transition"
-      >
-        Start Experience
-      </button>
-    </div>
-  </div>
+  <!-- Pie de página -->
+  <footer class="absolute bottom-6 text-sm text-gray-400">
+    <p>Created for the <span class="text-yellow-400 font-semibold">NASA Space Apps Challenge 2025</span></p>
+  </footer>
 </section>
