@@ -1,24 +1,43 @@
-<section class="min-h-screen flex flex-col items-center justify-center text-center text-white bg-gradient-to-b from-black via-indigo-950 to-purple-950">
-  
-  <!-- Imagen del título -->
-  <div class="flex flex-col items-center space-y-10 animate-fade-in">
+<section class="relative min-h-screen w-full overflow-hidden">
+  <!-- Imagen de fondo -->
+  <div
+    class="absolute top-[-40px] left-0 w-full h-[calc(100vh+74px)] bg-cover bg-center overflow-hidden"
+    style="background-image: url('assets/backgrounds/back.png'); clip-path: inset(0 0 40px 0);"
+  ></div>
+
+  <!-- Contenedor de historias -->
+  <div
+    class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center text-white"
+  >
     <img
-      src="sunglitch.png"
+      src="assets/images/sunglitch.png"
       alt="SW: The Day the Sun Glitched"
-      class="w-[320px] sm:w-[420px] md:w-[500px] drop-shadow-2xl"
+      class="w-[320px] sm:w-[420px] md:w-[500px] drop-shadow-2xl animate-fade-in -translate-y-[50px]"
+      (load)="imageLoaded = true"
     />
 
-    <!-- Botón de inicio -->
     <button
+      *ngIf="imageLoaded"
       (click)="startStory()"
-      class="mt-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 text-black font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:scale-105 hover:brightness-110 transition-transform duration-300"
+      class="-translate-y-[100px] mt-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 
+             text-black font-bold text-lg px-10 py-4 rounded-full shadow-lg 
+             hover:scale-105 hover:brightness-110 transition-transform duration-300 animate-fade-in-slow"
     >
       Start Story
     </button>
-  </div>
 
-  <!-- Pie de página -->
-  <footer class="absolute bottom-6 text-sm text-gray-400">
-    <p>Created for the <span class="text-yellow-400 font-semibold">NASA Space Apps Challenge 2025</span></p>
-  </footer>
+     <footer class="relative w-full mt-20 text-sm text-gray-400">
+      <!-- Capa oscura que aparece hacia el fondo -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
+
+      <div class="relative z-10 pb-10">
+        <p>
+          Created for the
+          <span class="text-yellow-400 font-semibold">
+            NASA Space Apps Challenge 2025
+          </span>
+        </p>
+      </div>
+    </footer>
+  </div>
 </section>

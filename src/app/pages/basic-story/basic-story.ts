@@ -10,7 +10,7 @@ import { StoryStateService, Scene } from '../../services/story-state';
   styleUrls: ['./basic-story.scss']
 })
 export class BasicStory {
-  currentScene: Scene;
+  public currentScene: Scene;
 
   constructor(public story: StoryStateService) {
     this.currentScene = this.story.currentScene;
@@ -26,18 +26,8 @@ export class BasicStory {
     this.currentScene = this.story.currentScene;
   }
 
-  restart() {
-    this.story.restart();
-    this.currentScene = this.story.currentScene;
-  }
-
-  handleImageError(event: Event) {
-    const img = event.target as HTMLImageElement;
-    img.src = 'assets/images/placeholder.png';
-  }
   onImageError(event: Event) {
-  const element = event.target as HTMLImageElement;
-  element.src = 'assets/images/placeholder.png';
-}
-
+    const element = event.target as HTMLImageElement;
+    element.src = 'assets/images/placeholder.png';
+  }
 }

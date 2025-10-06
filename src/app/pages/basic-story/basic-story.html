@@ -1,27 +1,27 @@
 <div class="story-container">
-  <!-- NARRADOR -->
+  <!-- 🟣 Narrador (arriba del todo) -->
   <div class="narrator" *ngIf="story.currentScene?.narration">
     {{ story.currentScene.narration }}
   </div>
 
-  <!-- ESCENA VISUAL -->
+  <!-- 🖼️ Escena -->
   <div class="scene-frame">
-   <img
-  [src]="story.currentScene?.image"
-  [alt]="story.currentScene?.title"
-  (error)="onImageError($event)"
-/>
+    <img
+      class="scene-image"
+      [src]="story.currentScene?.image"
+      [alt]="story.currentScene?.title"
+      (error)="onImageError($event)"
+    />
 
-
-    <!-- GLOBO DE DIÁLOGO -->
+    <!-- 💬 Globo de diálogo dentro de la imagen -->
     <div class="dialogue-bubble" *ngIf="story.currentScene?.dialogue">
       <p>{{ story.currentScene.dialogue }}</p>
     </div>
   </div>
 
-  <!-- CONTROLES -->
+  <!-- 🟢 Controles -->
   <div class="controls">
-    <button (click)="prevScene()" [disabled]="story.isFirst">⟵ Anterior</button>
-    <button (click)="nextScene()" [disabled]="story.isLast">Continuar ⟶</button>
+    <button (click)="prevScene()" [disabled]="story.isFirst">⟵ Back</button>
+    <button (click)="nextScene()" [disabled]="story.isLast">Continue ⟶</button>
   </div>
 </div>

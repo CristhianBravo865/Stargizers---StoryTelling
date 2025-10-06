@@ -1,208 +1,146 @@
-/* Puedes agregar estilos personalizados aquí; Tailwind hace la mayor parte */
 :host {
   display: block;
-}
-
-/* ejemplo pequeño: dar foco visible a botones */
-button:focus {
-  outline: 2px solid rgba(255,255,255,0.15);
-  outline-offset: 2px;
-}
-.story-container {
-  position: relative;
-  width: 100%;
   height: 100vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  background: linear-gradient(to bottom, #000, #1e1b4b, #3b0764); /* same gradient as home */
   color: #fff;
+  font-family: 'Poppins', sans-serif;
   overflow: hidden;
-  transition: background-image 1s ease;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.text-container {
-  position: relative;
-  z-index: 2;
-  max-width: 70%;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.narration,
-.dialogue-box {
-  font-size: 1.4rem;
-  margin: 0.5rem 0;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-  animation: fadeIn 1.5s ease;
-}
-
-.dialogue-box {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s ease;
-}
-
-.dialogue-box:hover {
-  transform: scale(1.05);
-}
-
-.next-btn {
-  position: relative;
-  z-index: 2;
-  background: linear-gradient(90deg, #ffae00, #ff6a00);
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-bottom: 2rem;
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-
-.next-btn:hover {
-  transform: scale(1.1);
-  background: linear-gradient(90deg, #ffc300, #ff8a00);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 1.5s ease;
-}
-img {
-  transition: transform 0.4s ease;
-  &:hover {
-    transform: scale(1.02);
-  }
-}
-
-button {
-  transition: transform 0.2s ease, background-color 0.2s;
-  &:hover:not(:disabled) {
-    transform: scale(1.05);
-  }
 }
 
 .story-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 1rem;
-  font-family: 'Poppins', sans-serif;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
 }
 
+/* 🟣 Narration box (above image) */
 .narrator {
-  background: #f7f2da;
-  border: 2px solid #000;
+  background: #fff8dc;
+  color: #222;
+  border: 3px solid #000;
   border-radius: 12px;
-  padding: 0.75rem 1rem;
-  max-width: 80%;
+  padding: 1rem 1.5rem;
   font-family: 'Comic Neue', cursive;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 80%;
+  text-align: center;
+  box-shadow: 4px 4px 0 #000;
   margin-bottom: 1rem;
-  box-shadow: 3px 3px 0 #000;
+  animation: fadeIn 0.8s ease;
 }
 
+/* 🖼️ Scene (main image container) */
 .scene-frame {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 90%;
-  max-width: 700px;
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  background: transparent;
+  border: none;           
+  border-radius: 0;        
+  box-shadow: none;   
+  overflow: visible;      
 }
 
+/* 🖼️ Scene image */
 .scene-image {
   width: 100%;
-  border-radius: 12px;
-  border: 3px solid #000;
-  box-shadow: 6px 6px 0 #0003;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.4s ease;
 }
 
-/* 💬 Globo de diálogo */
+.scene-image:hover {
+  transform: scale(1.01);
+}
+
+/* 💬 Dialogue bubble inside image */
 .dialogue-bubble {
   position: absolute;
-  bottom: 15%;
+  bottom: 8%;
   left: 50%;
   transform: translateX(-50%);
-  background: white;
-  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+  border: 3px solid #000;
   border-radius: 16px;
-  padding: 0.75rem 1rem;
-  max-width: 70%;
+  padding: 0.8rem 1.2rem;
   font-family: 'Comic Neue', cursive;
-  font-size: 1rem;
+  font-size: 1.1rem;
   box-shadow: 3px 3px 0 #000;
+  max-width: 75%;
+  text-align: center;
+  animation: fadeInUp 0.8s ease;
   transition: all 0.3s ease;
 }
 
-/* opcional: “punta” del globo */
+.dialogue-bubble:hover {
+  transform: translateX(-50%) scale(1.05);
+}
+
 .dialogue-bubble::after {
   content: '';
   position: absolute;
-  bottom: -12px;
-  left: 30px;
+  bottom: -14px;
+  left: 40px;
   width: 0;
   height: 0;
-  border: 8px solid transparent;
+  border: 10px solid transparent;
   border-top-color: #fff;
   border-left-color: #000;
   transform: rotate(25deg);
 }
 
+/* 🟢 Controls */
 .controls {
-  margin-top: 1rem;
   display: flex;
-  gap: 1rem;
-
-  button {
-    font-family: 'Comic Neue', cursive;
-    background: #ffd966;
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 0.5rem 1.5rem;
-    cursor: pointer;
-    transition: transform 0.1s ease;
-  }
-
-  button:hover:not(:disabled) {
-    transform: scale(1.05);
-  }
-
-  button:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
+  gap: 1.2rem;
+  margin-top: 1rem;
 }
-/* Animaciones */
+
+.controls button {
+  background: #ffdd57;
+  color: #000;
+  font-family: 'Comic Neue', cursive;
+  border: 3px solid #000;
+  border-radius: 10px;
+  padding: 0.7rem 1.6rem;
+  font-size: 1.1rem;
+  box-shadow: 3px 3px 0 #000;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s;
+}
+
+.controls button:hover:not(:disabled) {
+  transform: scale(1.08);
+  background-color: #ffe781;
+}
+
+.controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ✨ Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
